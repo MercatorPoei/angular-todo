@@ -18,12 +18,7 @@
   <main>
     <section class="todo-list">
       <div class="todo-card" *ngFor="let todo of todos">
-          <ng-template *ngIf="todo.completed === true; else uncheckBlock">
-            <input type="checkbox" [checked]="true">
-          </ng-template>
-          <ng-template #uncheckBlock>
-            <input type="checkbox" [checked]="false">
-          </ng-template>
+            <input type="checkbox" (change)="isCompleted($event, todo.id)">
 
           <p> {{ todo.title }} </p>
 

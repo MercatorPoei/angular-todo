@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <title>My Todo App</title>
+</head>
+
+<body>
+
+  <main>
+    <section class="todo-list">
+      <div class="todo-card" *ngFor="let todo of todos">
+          <ng-template *ngIf="todo.completed === true; else uncheckBlock">
+            <input type="checkbox" [checked]="true">
+          </ng-template>
+          <ng-template #uncheckBlock>
+            <input type="checkbox" [checked]="false">
+          </ng-template>
+
+          <p> {{ todo.title }} </p>
+
+          <button class="todo-remove" type="button" (click)="deleteTodo(todo)">
+            <span class="material-symbols-outlined">
+              delete
+            </span>
+          </button>
+      </div>
+    </section>
+    <section class="todo-actions">
+      <!-- <button type="button" (click)="previousTodos()">Précédent</button>
+      <button type="button" (click)="nextTodos()">Suivant</button> -->
+    </section>
+    <div>
+      <button class="add-button" type="button" routerLink="/add">+</button>
+    </div>
+
+
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+* {
+    box-sizing: border-box;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+
+  main {
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 40px);
+    width: 500px;
+  }
+
+  .todo-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 20px 0 20px;
+  }
+
+  .todo-card {
+    display: flex;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    color: #363535;
+    margin-bottom: 20px;
+  }
+
+  .todo-card p {
+    flex: 1;
+  }
+
+  .todo-card:last-child {
+    margin-bottom: 0;
+  }
+
+  input {
+    margin-right: 10px;
+  }
+
+  .todo-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .todo-actions button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: color .3s;
+  }
+
+  .todo-actions button:hover {
+    color: rgb(43, 131, 231);
+  }
+
+  .todo-remove {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .todo-remove:hover {
+    transition: color .3s;
+    color: rgb(43, 131, 231);
+  }
+
+  .add-button {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 80px;
+    height: 80px;
+    background-color: rgb(43, 131, 231);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 30px;
+  }
+
+  /* CSS from add-todo.html */
+  .todo-form {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+  }
+
+  .todo-form input {
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .todo-form input:focus {
+    outline: solid rgb(43, 131, 231);
+  }
+
+  .todo-form-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .todo-form-actions button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: color .3s;
+  }
+
+  .todo-form .cancel-button:hover {
+    color: rgb(231, 43, 93);
+  }
+
+  .todo-form .add-button1:hover {
+    color: rgb(43, 131, 231);
+  }
+/* PERSO MM */
+nav {
+  margin : 5px;
+  padding: 20px 5px;
+}
+
+nav a{
+  border : 1px solid;
+  color:black;
+  margin : 12px;
+  padding : 10px 27px;
+  text-decoration-line: none;
+}
+
+nav a:hover{
+  border-color:azure;
+  color: red;
+}

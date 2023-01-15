@@ -9,6 +9,7 @@ import { ListTodosComponent } from './todos/list-todos/list-todos.component';
 import { AddTodoComponent } from './todos/add-todo/add-todo.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -24,7 +25,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     MatSnackBarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

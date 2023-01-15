@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {ThemePalette} from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-loader',
@@ -6,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./loader.component.css']
 })
 export class LoaderComponent {
-
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'indeterminate';
+  value = 50;
 }

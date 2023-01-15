@@ -31,6 +31,7 @@ export class ListTodosComponent implements OnInit {
       .subscribe(
         (todos) => {
           this.todos = todos;
+          this.displayTodos();
 
           if (todos.length === 0) {
             this.snackbarService.openSnackBar("Aucun Todo", 4000)
@@ -105,7 +106,7 @@ export class ListTodosComponent implements OnInit {
 
 
   displayTodos(): Todo[] {
-    this.tabTodos = this.todos.splice(this.indexFirstTodo,this.indexLastTodo);
+    this.tabTodos = this.todos.slice(this.indexFirstTodo,this.indexLastTodo);
     console.log(this.tabTodos);
     return this.tabTodos;
   }

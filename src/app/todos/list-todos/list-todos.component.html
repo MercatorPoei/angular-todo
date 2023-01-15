@@ -30,8 +30,8 @@
       </div>
     </section>
     <section class="todo-actions">
-      <!-- <button type="button" (click)="previousTodos()">Précédent</button>
-      <button type="button" (click)="nextTodos()">Suivant</button> -->
+      <button type="button" [disabled]="disablePrevious()">Précédent</button>
+      <button type="button" [disabled]="disableNext()">Suivant</button>
     </section>
     <div>
       <button class="add-button" type="button" routerLink="/add">+</button>

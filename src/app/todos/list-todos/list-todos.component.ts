@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { EventType } from '@angular/router';
 import { timeout } from 'rxjs';
 import { SnackBarService } from 'src/app/snackbar/snack-bar.service';
@@ -13,24 +13,26 @@ import { TodosService } from '../todos.service';
 })
 export class ListTodosComponent implements OnInit {
   todos: Todo[] = [];
-  nbrePages : number = 0;
-  TODOPERPAGE : number = 10;
-  checkboxState : boolean = false;
+  displayTodos: Todo[] = [];
+  todosPerPage: number = 5;
+  indexFirstTodo: number = 0;
+  indexLastTodo: number = 4;
 
   constructor(private todoService: TodosService,
-    private snackbarService : SnackBarService
-    ) { }
+    private snackbarService: SnackBarService
+  ) { }
 
   ngOnInit(): void {
     this.getTodos();
   }
 
   getTodos(): void {
-  this.todoService.getTodos()
+    this.todoService.getTodos()
       .subscribe(
         (todos) => {
           this.todos = todos;
-          if(todos.length === 0){
+
+          if (todos.length === 0) {
             this.snackbarService.openSnackBar("Aucun Todo", 4000)
           }
         }
@@ -47,12 +49,28 @@ export class ListTodosComponent implements OnInit {
   }
 
 
-  openSnackBar(message: string, duration : number, action? : string){
-    this.snackbarService.openSnackBar(message,duration, action)
+  openSnackBar(message: string, duration: number, action?: string) {
+    this.snackbarService.openSnackBar(message, duration, action)
   }
 
-  isCompleted($event : Event, todo : number){
+  isCompleted($event: Event, todo: number) {
     console.log("selected" + todo);
   }
 
+  disableNext() : boolean {
+    if (this.indexLastTodo === this.todos.length - 1) {
+      return  true;
+    } else {
+      return false;
+    }
+  }
+
+
+  disablePrevious() : boolean {
+    if (this.indexFirstTodo === 0) {
+      return  true;
+    } else {
+      return false;
+    }
+  }
 }

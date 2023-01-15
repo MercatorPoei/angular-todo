@@ -17,7 +17,7 @@
       <input type="text" name="title" #todotitle placeholder="Que dois je faire ?">
 
       <div class="todo-form-actions">
-        <button  class="add-button1" type="button" (click)="addTodo(todotitle.value); todotitle.value=''">Ajouter</button>
+        <button  class="add-button1" type="submit" (click)="addTodo(todotitle.value); todotitle.value=''">Ajouter</button>
         <button class="cancel-button" type="button" routerLink="/list">Annuler</button>
       </div>
     </form>

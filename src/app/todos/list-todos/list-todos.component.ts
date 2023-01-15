@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventType } from '@angular/router';
 import { timeout } from 'rxjs';
 import { SnackBarService } from 'src/app/snackbar/snack-bar.service';
 
@@ -45,23 +46,13 @@ export class ListTodosComponent implements OnInit {
       .subscribe();
   }
 
+
   openSnackBar(message: string, duration : number, action? : string){
     this.snackbarService.openSnackBar(message,duration, action)
   }
 
-  isCheck(){
-
+  isCompleted($event : Event, todo : number){
+    console.log("selected" + todo);
   }
 
-  getPages() {
-    this.nbrePages = Math.ceil(this.todos.length / 10);
-    console.log(this.nbrePages);
-  }
-
-  nextTodos(){
-  }
-
-
-  previousTodos(){
-  }
 }

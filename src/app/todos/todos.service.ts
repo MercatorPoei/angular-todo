@@ -38,6 +38,7 @@ export class TodosService {
     return this.http.post<Todo>(this.todoUrl, todo, this.httpOptions)
   }
 
+
   deleteTodo(id : number): Observable<Todo>{
     return this.http.delete<Todo>(this.todoUrl+`${id}`, this.httpOptions);
   }

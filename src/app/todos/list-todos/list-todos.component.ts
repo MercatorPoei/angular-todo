@@ -13,7 +13,7 @@ import { TodosService } from '../todos.service';
 })
 export class ListTodosComponent implements OnInit {
   todos: Todo[] = [];
-  displayTodos: Todo[] = [];
+  tabTodos: Todo[] = [];
   todosPerPage: number = 5;
   indexFirstTodo: number = 0;
   indexLastTodo: number = 4;
@@ -53,24 +53,61 @@ export class ListTodosComponent implements OnInit {
     this.snackbarService.openSnackBar(message, duration, action)
   }
 
+
+
   isCompleted($event: Event, todo: number) {
     console.log("selected" + todo);
   }
 
-  disableNext() : boolean {
+
+  disableNext(): boolean {
     if (this.indexLastTodo === this.todos.length - 1) {
-      return  true;
+      return true;
     } else {
       return false;
     }
   }
 
 
-  disablePrevious() : boolean {
+  disablePrevious(): boolean {
     if (this.indexFirstTodo === 0) {
-      return  true;
+      return true;
     } else {
       return false;
     }
   }
+
+  nextPage() {
+    this.indexFirstTodo = this.indexFirstTodo + this.todosPerPage;
+    this.indexLastTodo = this.indexLastTodo + this.todosPerPage;
+
+    if (this.indexFirstTodo > this.todos.length - 1) {
+      this.indexLastTodo = this.todos.length - 1;
+      this.indexFirstTodo = this.todos.length - this.todosPerPage;
+    }
+
+    console.log(this.indexFirstTodo, this.indexLastTodo, this.todosPerPage)
+
+    this.displayTodos();
+  }
+
+  previousPage() {
+    this.indexFirstTodo = this.indexFirstTodo - this.todosPerPage;
+    this.indexLastTodo = this.indexLastTodo - this.todosPerPage;
+
+    if (this.indexFirstTodo < 0) {
+      this.indexFirstTodo = 0;
+      this.indexLastTodo = this.todosPerPage - 1;
+    }
+    console.log(this.indexFirstTodo, this.indexLastTodo, this.todosPerPage)
+    this.displayTodos();
+  }
+
+
+  displayTodos(): Todo[] {
+    this.tabTodos = this.todos.splice(this.indexFirstTodo,this.indexLastTodo);
+    console.log(this.tabTodos);
+    return this.tabTodos;
+  }
+
 }

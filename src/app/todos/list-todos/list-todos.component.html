@@ -17,7 +17,7 @@
 
   <main>
     <section class="todo-list">
-      <div class="todo-card" *ngFor="let todo of todos">
+      <div class="todo-card" *ngFor="let todo of tabTodos">
             <input type="checkbox" (change)="isCompleted($event, todo.id)">
 
           <p> {{ todo.title }} </p>
@@ -30,8 +30,8 @@
       </div>
     </section>
     <section class="todo-actions">
-      <button type="button" [disabled]="disablePrevious()">Précédent</button>
-      <button type="button" [disabled]="disableNext()">Suivant</button>
+      <button type="button" [disabled]="disablePrevious()" (click)="previousPage()">Précédent</button>
+      <button type="button" [disabled]="disableNext()" (click)="nextPage()">Suivant</button>
     </section>
     <div>
       <button class="add-button" type="button" routerLink="/add">+</button>

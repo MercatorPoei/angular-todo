@@ -87,7 +87,6 @@ export class ListTodosComponent implements OnInit {
       this.indexFirstTodo = this.todos.length - this.todosPerPage;
     }
 
-    console.log(this.indexFirstTodo, this.indexLastTodo, this.todos.length)
 
     this.displayTodos();
   }
@@ -100,15 +99,12 @@ export class ListTodosComponent implements OnInit {
       this.indexFirstTodo = 0;
       this.indexLastTodo = this.todosPerPage - 1;
     }
-    console.log(this.indexFirstTodo, this.indexLastTodo, this.todosPerPage)
     this.displayTodos();
   }
 
 
   displayTodos(): Todo[] {
     this.tabTodos = this.todos.slice(this.indexFirstTodo,this.indexLastTodo+1);
-    console.log(this.tabTodos);
-    console.log(this.todos);
     return this.tabTodos;
   }
 

@@ -20,9 +20,7 @@ export class AddTodoComponent implements OnInit {
   addTodo(title: string): void {
     if (title.length === 0) { return; }
       this.todoService.addTodo({ title } as Todo)
-        .subscribe(
-          (todo) => (this.openSnackBar("Todo ajouté",1500, "Ok")))
-    
+        .subscribe()
   }
 
   openSnackBar(message: string, duration : number, action? : string){

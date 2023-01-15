@@ -35,7 +35,7 @@ export class TodosService {
   
 
   addTodo(todo : Todo): Observable<Todo>{
-    return this.http.post<Todo>(this.todoUrl, todo, this.httpOptions)
+    return this.http.post<Todo>(this.todoUrl, todo, this.httpOptions);
   }
 
 

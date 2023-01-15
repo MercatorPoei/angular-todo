@@ -62,7 +62,7 @@ export class ListTodosComponent implements OnInit {
 
 
   disableNext(): boolean {
-    if (this.indexLastTodo === this.todos.length - 1) {
+    if (this.indexLastTodo >= this.todos.length - 1) {
       return true;
     } else {
       return false;
@@ -87,7 +87,7 @@ export class ListTodosComponent implements OnInit {
       this.indexFirstTodo = this.todos.length - this.todosPerPage;
     }
 
-    console.log(this.indexFirstTodo, this.indexLastTodo, this.todosPerPage)
+    console.log(this.indexFirstTodo, this.indexLastTodo, this.todos.length)
 
     this.displayTodos();
   }
@@ -106,8 +106,9 @@ export class ListTodosComponent implements OnInit {
 
 
   displayTodos(): Todo[] {
-    this.tabTodos = this.todos.slice(this.indexFirstTodo,this.indexLastTodo);
+    this.tabTodos = this.todos.slice(this.indexFirstTodo,this.indexLastTodo+1);
     console.log(this.tabTodos);
+    console.log(this.todos);
     return this.tabTodos;
   }
 

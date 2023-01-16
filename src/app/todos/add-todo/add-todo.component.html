@@ -1,12 +1,11 @@
 <body>
   <main>
     <form class="todo-form">
-      <input type="text" (keydown.enter)="addTodo(todotitle.value)  " name="title" #todotitle
-        placeholder="Que dois je faire ?">
+      <input type="text" name="title" placeholder="Que dois je faire ?" #todotitle>
 
       <div class="todo-form-actions">
-        <button class="add-button1" type="button"
-          (click)="addTodo(todotitle.value); todotitle.value=''">Ajouter</button>
+        <button class="add-button1" type="submit"
+          (click)="addTodo(todotitle.value); todotitle.value=''" >Ajouter</button>
         <button class="cancel-button" type="button" (click)="todotitle.value =''">Annuler</button>
       </div>
     </form>

@@ -47,14 +47,16 @@ export class ListTodosComponent implements OnInit {
     // filter => affiche seulement les elements differents de todo
     //  on part du principe que le delete va être ok
     this.todos = this.todos.filter(t => t !== todo);
-    if(this.todos.length === 5){
+    if(this.todos.length % 5 === 0){
       this.previousPage();
       this.displayTodos();
     }else{
       this.displayTodos();
     }
     this.todoService.deleteTodo(todo.id)
-      .subscribe();
+      .subscribe(() => {
+        this.openSnackBar("Todo supprimé",2000);
+      });
 
   }
 

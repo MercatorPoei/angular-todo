@@ -10,7 +10,7 @@ import { TodosService } from '../todos.service';
 })
 export class AddTodoComponent implements OnInit {
 
-  constructor(private todoService: TodosService, private snackbarService : SnackBarService) { }
+  constructor(private todoService: TodosService, private snackbarService: SnackBarService) { }
 
 
   ngOnInit(): void {
@@ -19,14 +19,13 @@ export class AddTodoComponent implements OnInit {
 
   addTodo(title: string): void {
     if (title.length === 0) { return; }
-      this.todoService.addTodo({ title } as Todo)
-        .subscribe()
+    this.todoService.addTodo({ title } as Todo)
+      .subscribe(() => {this.openSnackBar("Todo ajouté", 2000)})
   }
 
-  openSnackBar(message: string, duration : number, action? : string){
-    this.snackbarService.openSnackBar(message,duration, action)
+  openSnackBar(message: string, duration: number, action?: string) {
+    this.snackbarService.openSnackBar(message, duration, action)
   }
 
-  
 
 }

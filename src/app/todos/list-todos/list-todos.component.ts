@@ -24,6 +24,7 @@ export class ListTodosComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTodos();
+    this.displayTodos();
   }
 
   getTodos(): void {
@@ -31,11 +32,12 @@ export class ListTodosComponent implements OnInit {
       .subscribe(
         (todos) => {
           this.todos = todos;
-          this.displayTodos();
 
           if (todos.length === 0) {
             this.snackbarService.openSnackBar("Aucun Todo", 4000)
           }
+
+          this.displayTodos();
         }
       )
   }
@@ -45,8 +47,15 @@ export class ListTodosComponent implements OnInit {
     // filter => affiche seulement les elements differents de todo
     //  on part du principe que le delete va être ok
     this.todos = this.todos.filter(t => t !== todo);
+    if(this.todos.length === 5){
+      this.previousPage();
+      this.displayTodos();
+    }else{
+      this.displayTodos();
+    }
     this.todoService.deleteTodo(todo.id)
       .subscribe();
+
   }
 
 
@@ -103,9 +112,11 @@ export class ListTodosComponent implements OnInit {
   }
 
 
-  displayTodos(): Todo[] {
-    this.tabTodos = this.todos.slice(this.indexFirstTodo,this.indexLastTodo+1);
-    return this.tabTodos;
+  displayTodos(): void {
+    this.tabTodos = this.todos.slice(this.indexFirstTodo, this.indexLastTodo + 1);
+    console.log(this.todos);
+
+    
   }
 
 }
